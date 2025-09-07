@@ -1,0 +1,32 @@
+/* tailwind intel ext */
+@import "tailwindcss";
+
+/* inter font */
+.inter-font {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.containerr{
+    max-width: 1650px;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.primary-bg{
+    background-color: rgba(21, 128, 61, 1);
+}
+.primary-btn{
+    color: rgba(21, 128, 61, 1);
+    background-color: rgba(250, 204, 21, 1);
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.primary-btn:hover{
+    background-color: rgba(250, 224, 35, 1);
+}
