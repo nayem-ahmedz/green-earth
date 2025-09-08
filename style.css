@@ -1,5 +1,5 @@
 /* tailwind intel ext */
-/* @import "tailwindcss"; */
+@import "tailwindcss";
 
 /* inter font */
 .inter-font {
@@ -80,6 +80,7 @@
     margin-top: 4px;
     font-size: 1rem;
     font-weight: 500;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1280px){
