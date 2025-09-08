@@ -11,21 +11,34 @@ function getCategories(){
 // display categories
 const cateContainer = document.getElementById('categories-buttons');
 function displayCategories(categories){
-    cateContainer.innerHTML = '<button class="cate-btn cate-active">All Trees</button>';
+    cateContainer.innerHTML = '<button class="cate-btn cate-btn-0" onclick="getPlants(0)">All Trees</button>';
     categories.forEach(category => {
         const button = document.createElement('button');
-        button.classList.add('cate-btn');
+        button.classList.add('cate-btn', `cate-btn-${category.id}`);
+        button.setAttribute('onclick', `getPlants(${category.id})`);
         button.innerText = category.category_name;
         cateContainer.appendChild(button);
     });
+    getPlants(0);
 }
 
 // fetch categories once, on loads
 getCategories();
 
+// manage active status in category button
+const removeCateActiveBtn = () => {
+    const allCateButtons = document.getElementsByClassName('cate-btn');
+    for(const button of allCateButtons){
+        button.classList.remove('cate-active');
+    }
+}
+
 // fetch plants
 async function getPlants(categoryId){
     plantCardCont.innerHTML = '<span class="loading loading-spinner loading-xl col-span-full mx-auto my-20"></span>';
+    removeCateActiveBtn();
+    const selectedCate = document.querySelector(`.cate-btn-${categoryId}`);
+    selectedCate.classList.add('cate-active');
     let url = '';
     if(categoryId === 0){
         url = 'https://openapi.programming-hero.com/api/plants';
@@ -36,16 +49,6 @@ async function getPlants(categoryId){
     const json = await response.json();
     displayPlantCards(json.plants);
 }
-
-
-// {
-//     "id": 1,
-//     "image": "https://i.ibb.co.com/cSQdg7tf/mango-min.jpg",
-//     "name": "Mango Tree",
-//     "description": "A fast-growing tropical tree that produces delicious, juicy mangoes during summer. Its dense green canopy offers shade",
-//     "category": "Fruit Tree",
-//     "price": 500
-// }
 
 // display plants cards
 const plantCardCont = document.getElementById('plant-cards');
@@ -71,6 +74,3 @@ function displayPlantCards(plants){
         plantCardCont.appendChild(card);
     }
 }
-
-// load all plants
-getPlants(0);
