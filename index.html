@@ -62,11 +62,7 @@
             <article class="main-containerr">
                 <section class="">
                     <h3 class="text-xl font-semibold mb-4">Categories</h3>
-                    <button class="cate-btn cate-active">All Trees</button>
-                    <button class="cate-btn">All Trees</button>
-                    <button class="cate-btn">All Trees</button>
-                    <button class="cate-btn">All Trees</button>
-                    <button class="cate-btn">All Trees</button>
+                    <div id="categories-buttons"></div>
                 </section>
                 <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-7">
                     <div class="card bg-base-100">
@@ -177,9 +173,9 @@
                         <input type="email" class="input w-full" placeholder="Your Email Address" />
                         <select class="select w-full">
                             <option disabled selected>Number of Trees</option>
-                            <option>Crimson</option>
-                            <option>Amber</option>
-                            <option>Velvet</option>
+                            <option value="1">1 Tree $5</option>
+                            <option value="5">5 Tree $25</option>
+                            <option value="10">10 Tree $50</option>
                         </select>
                         <input type="submit" value="Donate Now" class="primary-btn mt-2" />
                     </form>
