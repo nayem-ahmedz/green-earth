@@ -83,10 +83,13 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1700px){
     .banner{
-        background-image: none;
+        background-size: 30%;
     }
+}
+
+@media screen and (max-width: 1280px){
     .main-containerr{
         grid-template-columns: 250px auto;
         gap: 1rem;
@@ -95,11 +98,21 @@
         grid-column: span 2;
     }
 }
+
 @media  screen and (max-width: 640px) {
+    .banner{
+        background-size: 50%;
+        background-image: url('assets/hero-leaf2.png');
+        background-position: right bottom;
+    }
     .main-containerr{
         grid-template-columns: auto;
     }
     .cart-cont{
         grid-column: span 1;
+    }
+    .cate-btn{
+        display: inline-block;
+        width: fit-content;
     }
 }
