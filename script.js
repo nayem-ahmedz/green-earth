@@ -58,7 +58,7 @@ function displayPlantCards(plants){
         const card = document.createElement('div');
         card.classList.add('card', 'bg-base-100');
         card.innerHTML = `
-        <div class="card-body p-3 lg:p-4">
+        <div class="card-body p-3 lg:p-4 plant-card-${plant.id}">
             <div class="aspect-square">
                 <img src="${plant.image}" alt="${plant.name}" class="aspect-square rounded-lg" />
             </div>
@@ -66,9 +66,9 @@ function displayPlantCards(plants){
             <p class="opacity-80">${plant.description.slice(0,90)}...</p>
             <div class="flex justify-between items-center text-sm">
                 <span class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-2xl font-medium">${plant.category}</span>
-                <span class="font-semibold">৳${plant.price}</span>
+                <span class="font-semibold plant-price">৳${plant.price}</span>
             </div>
-            <button class="cart-btn">Add to Cart</button>
+            <button class="cart-btn" onclick="addToCart(${plant.id})">Add to Cart</button>
         </div>
         `;
         plantCardCont.appendChild(card);
@@ -97,11 +97,52 @@ const displayModal = (plant) => {
     document.querySelector('#my_modal_5').showModal();
 }
 
-// {
-//     "id": 3,
-//     "image": "https://i.ibb.co.com/xt98PwZq/jackfruit-min.jpg",
-//     "name": "Jackfruit Tree",
-//     "description": "A large tropical tree that bears the world’s biggest fruit, the jackfruit. Its sweet and aromatic flesh is both nutritious and filling, and the tree itself provides generous shade.",
-//     "category": "Fruit Tree",
-//     "price": 800
-// }
+// add to cart
+function addToCart(item){
+    const card = document.querySelector(`.plant-card-${item}`);
+    const name = card.querySelector('.card-title').innerText;
+    const price = parseInt(card.querySelector('.plant-price').innerText.slice(1));
+    alert(name + ' has been added to the cart');
+    updateCart(name, price);
+}
+
+// update my cart
+const cartItemsCont = document.getElementById('cart-items');
+function updateCart(name, price){
+    const newItem = document.createElement('div');
+    newItem.classList.add('flex', 'justify-between', 'items-center', 'bg-[#F0FDF4]', 'py-2', 'px-3', 'mb-2', 'rounded-lg');
+    newItem.addEventListener('click', (e) => removeCartItem(e, price));
+    newItem.innerHTML = `
+    <div class="text-[rgba(31,41,55,1)]">
+        <h4 class="text-sm font-semibold mb-1">${name}</h4>
+        <p class="opacity-50">৳${price} x 1</p>
+    </div>
+    <i class="fa-solid fa-xmark text-2xl text-red-500 cursor-pointer opacity-70 hover:opacity-100"></i>
+    `;
+    cartItemsCont.appendChild(newItem);
+    // update total price after adding product
+    total += price;
+    updateCartBalance();
+}
+
+// remove cart items
+function removeCartItem(e, price){
+    if(e.target.classList.contains('fa-xmark')){
+        e.target.parentNode.remove();
+        // update total price after removing product
+        total -= price;
+        updateCartBalance();
+    }
+}
+
+// update total balance in cart
+let total = 0;
+const cartAmField = document.getElementById('cart-amount-field');
+function updateCartBalance(){
+    if(total === 0){
+        cartAmField.style.display = 'none';
+    } else{
+        cartAmField.style.display = 'flex';
+        document.querySelector('#cart-amount').innerHTML = `৳${total}`;
+    }
+}

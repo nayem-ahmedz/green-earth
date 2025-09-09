@@ -69,24 +69,10 @@
                 <section class="cart-cont p-4 bg-white rounded-2xl">
                     <h3 class="text-xl text-[rgba(0,0,0,1)] mb-2">Your Cart</h3>
                     <div class="max-w-xl">
-                        <div class="flex justify-between items-center bg-[#F0FDF4] py-2 px-3 mb-2 rounded-lg">
-                            <div class="text-[rgba(31,41,55,1)]">
-                                <h4 class="text-sm font-semibold mb-1">Mango Tree</h4>
-                                <p class="opacity-50">$500 x 1</p>
-                            </div>
-                            <i class="fa-solid fa-xmark text-[##8C8C8C]"></i>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#F0FDF4] py-2 px-3 mb-2 rounded-lg">
-                            <div class="text-[rgba(31,41,55,1)]">
-                                <h4 class="text-sm font-semibold mb-1">Mango Tree</h4>
-                                <p class="opacity-50">$500 x 1</p>
-                            </div>
-                            <i class="fa-solid fa-xmark text-[##8C8C8C]"></i>
-                        </div>
-                        <h4
-                            class="primary-color font-medium flex justify-between border-t-2 border-[rgba(31,41,55,0.1)] mt-5 py-2">
+                        <div id="cart-items"></div>
+                        <h4 id="cart-amount-field" class="primary-color font-medium justify-between border-t-2 border-[rgba(31,41,55,0.1)] mt-5 py-2 hidden">
                             <span>Total :</span>
-                            <span>$1000</span>
+                            <span id="cart-amount"></span>
                         </h4>
                     </div>
                 </section>
