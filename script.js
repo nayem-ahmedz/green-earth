@@ -62,7 +62,7 @@ function displayPlantCards(plants){
             <div class="aspect-square">
                 <img src="${plant.image}" alt="${plant.name}" class="aspect-square rounded-lg" />
             </div>
-            <h2 class="card-title">${plant.name}</h2>
+            <h2 class="card-title cursor-pointer" onclick="fetchModal(${plant.id})">${plant.name}</h2>
             <p class="opacity-80">${plant.description.slice(0,90)}...</p>
             <div class="flex justify-between items-center text-sm">
                 <span class="text-[#15803D] bg-[#DCFCE7] py-2 px-3 rounded-2xl font-medium">${plant.category}</span>
@@ -74,3 +74,34 @@ function displayPlantCards(plants){
         plantCardCont.appendChild(card);
     }
 }
+
+// show modal
+async function fetchModal(plantId){
+    const url = `https://openapi.programming-hero.com/api/plant/${plantId}`;
+    const response = await fetch(url);
+    const json = await response.json();
+    displayModal(json.plants);
+}
+
+const displayModal = (plant) => {
+    const modalCont = document.getElementById('modal-content');
+    modalCont.innerHTML = `
+    <h2 class="font-bold text-3xl">${plant.name}</h2>
+    <div class="aspect-square">
+        <img src="${plant.image}" alt="${plant.name}" class="aspect-square rounded-lg" />
+    </div>
+    <h3 class="font-bold"> Category : <span class="font-normal">${plant.category}</h3>
+    <h3 class="font-bold"> Price : <span class="font-normal">${plant.price}</h3>
+    <h3 class="font-bold"> Description : <span class="font-normal">${plant.description}</h3>
+    `;
+    document.querySelector('#my_modal_5').showModal();
+}
+
+// {
+//     "id": 3,
+//     "image": "https://i.ibb.co.com/xt98PwZq/jackfruit-min.jpg",
+//     "name": "Jackfruit Tree",
+//     "description": "A large tropical tree that bears the world’s biggest fruit, the jackfruit. Its sweet and aromatic flesh is both nutritious and filling, and the tree itself provides generous shade.",
+//     "category": "Fruit Tree",
+//     "price": 800
+// }

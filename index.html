@@ -33,7 +33,7 @@
                         <li><a class="text-base font-medium">Plant a Tree</a></li>
                     </ul>
                 </div>
-                <a class="btn btn-ghost text-xl p-0">Green Earth</a>
+                <a class="btn btn-ghost text-xl">Green Earth</a>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal px-1">
@@ -64,7 +64,8 @@
                     <h3 class="text-xl font-semibold mb-4">Categories</h3>
                     <div id="categories-buttons"></div>
                 </section>
-                <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-7 content-start" id="plant-cards"></section>
+                <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-7 content-start" id="plant-cards">
+                </section>
                 <section class="cart-cont p-4 bg-white rounded-2xl">
                     <h3 class="text-xl text-[rgba(0,0,0,1)] mb-2">Your Cart</h3>
                     <div class="max-w-xl">
@@ -82,13 +83,25 @@
                             </div>
                             <i class="fa-solid fa-xmark text-[##8C8C8C]"></i>
                         </div>
-                        <h4 class="primary-color font-medium flex justify-between border-t-2 border-[rgba(31,41,55,0.1)] mt-5 py-2">
+                        <h4
+                            class="primary-color font-medium flex justify-between border-t-2 border-[rgba(31,41,55,0.1)] mt-5 py-2">
                             <span>Total :</span>
                             <span>$1000</span>
                         </h4>
                     </div>
                 </section>
             </article>
+            <!-- Modal -->
+            <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <div id="modal-content" class="space-y-2"></div>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </section>
         <section class="py-12 lg:py-24">
             <h2 class="primary-color text-3xl mb-5 md:mb-10 text-center font-semibold">About the Campaign</h2>
